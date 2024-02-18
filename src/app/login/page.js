@@ -1,4 +1,5 @@
 'use client'
+import Link from 'next/link'
 import { useRouter, useSearchParams } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 
@@ -22,7 +23,7 @@ function Login() {
             console.log(datas)
             setToken(datas.token)
             if(datas.success) return router.push('/')
-        }
+        } 
     }
     return (
         <div className='m-auto mt-3 p-3 w-6/12 rounded-2xl bg-slate-400'>
@@ -31,6 +32,7 @@ function Login() {
                 <input type="password" name="password" placeholder='password' className=' p-3 mb-2 rounded-lg font-bold' />
                 <button className=' p-3 mb-2 rounded-lg font-bold hover:bg-yellow-700 bg-yellow-500 border border-slate-50 hover:text-white'>login</button>
             </form>
+            <p className=' w-max m-3 text-slate-100'>for register go to <Link className='text-red-900' href={'/signup'}>signup</Link></p>
         </div>
     )
 }
