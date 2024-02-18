@@ -71,7 +71,7 @@ export default function Home(req) {
 
 
       {
-        token.length!==0 ? <div className='flex flex-col items-center m-auto'>
+        token? <div className='flex flex-col items-center m-auto'>
           <a href='/' onClick={handlerlogout} className='m-4  bg-yellow-500 rounded-xl p-4 border border-slate-600 cursor-pointer'>logout</a>
           <h1 className='m-5'>{user}</h1>
         </div> : <div>
