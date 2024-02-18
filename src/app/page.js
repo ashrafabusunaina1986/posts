@@ -27,7 +27,7 @@ export default function Home(req) {
     router.refresh()
     getToken()
     getUser()
-  }, [])
+  }, [router])
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
