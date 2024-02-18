@@ -24,11 +24,9 @@ export default function Home(req) {
     console.log(data)
   }
   useEffect(() => {
-    if (router) {
-      getToken()
-      getUser()
-      router.refresh()
-    }
+    router.refresh()
+    getToken()
+    getUser()
   }, [router, token])
 
   return (
@@ -72,14 +70,16 @@ export default function Home(req) {
 
 
       {
-        token !== '' ? <a href='/' onClick={handlerlogout} className='m-4 bg-yellow-500 rounded-xl p-4 border border-slate-600 cursor-pointer'>logout</a> : <div>
+        token !== '' ? <div className='flex flex-col items-center m-auto'>
+          <a href='/' onClick={handlerlogout} className='m-4  bg-yellow-500 rounded-xl p-4 border border-slate-600 cursor-pointer'>logout</a>
+          <h1 className='m-5'>{user}</h1>
+        </div> : <div>
           <a href='/login' className='m-4 bg-yellow-500 rounded-xl p-4 border border-slate-600 cursor-pointer'>login</a>
           <a href='/signup' className='m-4 bg-yellow-500 rounded-xl p-4 border border-slate-600 cursor-pointer'>Signup</a>
         </div>
       }
-      {
-        user && <h1>{user}</h1>
-      }
+
+
       <div className='flex' >
 
         <a
