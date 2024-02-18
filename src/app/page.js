@@ -9,6 +9,7 @@ export default function Home(req) {
   const [user, setUser] = useState('')
   const handlerlogout = async () => {
     const res = await fetch('/api/users/logout')
+    router.refresh()
   }
   const getUser = async () => {
     const res = await fetch('/api/users/me')
@@ -27,7 +28,7 @@ export default function Home(req) {
     router.refresh()
     getToken()
     getUser()
-  }, [user,router])
+  }, [])
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">

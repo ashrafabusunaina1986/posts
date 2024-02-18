@@ -19,11 +19,14 @@ function Login() {
                 }
             })
             if (!res.ok) return console.log(await res.text())
-            const datas=await res.json()
+            const datas = await res.json()
             console.log(datas)
             setToken(datas.token)
-            if(datas.success) return router.push('/')
-        } 
+            if (datas.success) {
+                router.push('/')
+                router.refresh()
+            }
+        }
     }
     return (
         <div className='m-auto mt-3 p-3 w-6/12 rounded-2xl bg-slate-400'>
