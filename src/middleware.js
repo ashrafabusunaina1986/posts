@@ -18,5 +18,6 @@ export const config={
         '/signup',
         '/post',
         '/profile',
+        '/task'
     ]
 }

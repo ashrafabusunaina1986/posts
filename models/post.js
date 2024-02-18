@@ -9,7 +9,11 @@ const postSchema=new Schema({
         type:String,
         required:[true,'provide text']
     },
+    user:{
+        type:String,
+        required:[true,'provide user']
+    }
 })
 
-const Posts=models.P || model('P',postSchema)
+const Posts=models.Posts || model('Posts',postSchema)
 export default Posts

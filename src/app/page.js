@@ -17,9 +17,6 @@ export default function Home(req) {
     setUser(data.user.email)
     console.log(data)
   }
-  const handerlogin=()=>{
-    router.push('/login')
-  }
   const getToken = async () => {
     const res = await fetch('/api')
     const data = await res.json()
@@ -27,6 +24,7 @@ export default function Home(req) {
     console.log(data)
   }
   useEffect(() => {
+    router.refresh()
     getToken()
     getUser()
   }, [])
@@ -72,18 +70,20 @@ export default function Home(req) {
 
 
       {
-        token? <a href='/' onClick={handlerlogout} className='m-4 bg-yellow-500 rounded-xl p-4 border border-slate-600 cursor-pointer'>logout</a>: <a href='/login' className='m-4 bg-yellow-500 rounded-xl p-4 border border-slate-600 cursor-pointer'>login</a>
+        token!==''? <a href='/' onClick={handlerlogout} className='m-4 bg-yellow-500 rounded-xl p-4 border border-slate-600 cursor-pointer'>logout</a>:<div>
+           <a href='/login' className='m-4 bg-yellow-500 rounded-xl p-4 border border-slate-600 cursor-pointer'>login</a>
+           <a href='/signup' className='m-4 bg-yellow-500 rounded-xl p-4 border border-slate-600 cursor-pointer'>Signup</a>
+        </div>
       }
       {
-        user 
+        user && <h1>{user}</h1>
       }
-      <div >
+      <div className='flex' >
 
         <a
           href="/post"
-          className="group  px-5 py-4 transition-colors "
-          target="_blank"
-          rel="noopener noreferrer"
+          className="group  px-5 py-4 p-4 m-2 transition-colors hover:bg-slate-300 hover:rounded-2xl"
+          
         >
           <h2 className={`mb-3 text-2xl font-semibold`}>
             Post{' '}
@@ -93,8 +93,32 @@ export default function Home(req) {
             Add notes
           </p>
         </a>
-
-
+        <a
+          href="/task"
+          className="group  px-5 py-4 p-4 m-2 transition-colors hover:bg-slate-300 hover:rounded-2xl"
+          
+        >
+          <h2 className={`mb-3 text-2xl font-semibold`}>
+            Task{' '}
+         
+          </h2>
+          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
+            Add tasks
+          </p>
+        </a>
+        <a
+          href="/profile"
+          className="group  px-5 py-4 p-4 m-2 transition-colors hover:bg-slate-300 hover:rounded-2xl"
+          
+        >
+          <h2 className={`mb-3 text-2xl font-semibold`}>
+            Profile{' '}
+         
+          </h2>
+          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
+            information with the user
+          </p>
+        </a>
       </div>
     </main>
   )
