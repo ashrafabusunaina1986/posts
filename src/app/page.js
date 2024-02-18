@@ -27,7 +27,7 @@ export default function Home(req) {
     if (router) {
       getToken()
       getUser()
-      router.refresh
+      router.refresh()
     }
   }, [router, token])
 
